@@ -1,9 +1,3 @@
-void main() {
-  double gajiBulanan = 10000000.0; // Gaji bulanan contoh: Rp10.000.000
-  double pajakTahunan = hitungPajakTahunan(gajiBulanan);
-  print('Pajak tahunan untuk gaji bulanan Rp${gajiBulanan.toInt()} = Rp${pajakTahunan.toInt()}');
-}
-
 double hitungPajakTahunan(double gajiBulanan) {
   const double ptkp = 54000000.0;
   double penghasilanTahunan = gajiBulanan * 12.0;
@@ -33,4 +27,21 @@ double hitungPajakTahunan(double gajiBulanan) {
   }
   
   return pajak;
+}
+
+void main() {
+  double gajiBulanan = 15500000.0;
+  double penghasilanTahunan = gajiBulanan * 12.0;
+  double ptkp = 54000000.0;
+  double pkp = penghasilanTahunan - ptkp;
+  double pajakTahunan = hitungPajakTahunan(gajiBulanan);
+  
+  print('--- PERHITUNGAN PAJAK GAJI ---');
+  print('');
+  print('Gaji Bulanan = ${gajiBulanan}');
+  print('Penghasilan Tahunan = ${penghasilanTahunan}');
+  print('Penghasilan Tidak Kena Pajak (PTKP) Per Tahun = ${ptkp}');
+  print('Penghasilan Kena Pajak (PKP) Per Tahun = ${pkp}');
+  print('');
+  print('Pajak tahunan = Rp${pajakTahunan.toInt()}');
 }

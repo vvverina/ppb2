@@ -1,4 +1,6 @@
-double hitungPajakTahunan(double gajiBulanan) {
+import 'package:intl/intl.dart';
+
+  double hitungPajakTahunan(double gajiBulanan) {
   const double ptkp = 54000000.0;
   double penghasilanTahunan = gajiBulanan * 12.0;
   double pkp = penghasilanTahunan - ptkp;
@@ -36,12 +38,19 @@ void main() {
   double pkp = penghasilanTahunan - ptkp;
   double pajakTahunan = hitungPajakTahunan(gajiBulanan);
   
+  //Format Rupiah
+  final NumberFormat rupiahFormat = NumberFormat.currency(
+    locale: 'id_ID',
+    symbol: 'Rp ',
+    decimalDigits: 0,  // Hilangkan desimal jika tidak perlu
+  );
+  
   print('--- PERHITUNGAN PAJAK GAJI ---');
   print('');
-  print('Gaji Bulanan = ${gajiBulanan}');
-  print('Penghasilan Tahunan = ${penghasilanTahunan}');
-  print('Penghasilan Tidak Kena Pajak (PTKP) Per Tahun = ${ptkp}');
-  print('Penghasilan Kena Pajak (PKP) Per Tahun = ${pkp}');
+  print('Gaji Bulanan = ${rupiahFormat.format(gajiBulanan)}');
+  print('Penghasilan Tahunan = ${rupiahFormat.format(penghasilanTahunan)}');
+  print('Penghasilan Tidak Kena Pajak (PTKP) Per Tahun = ${rupiahFormat.format(ptkp)}');
+  print('Penghasilan Kena Pajak (PKP) Per Tahun = ${rupiahFormat.format(pkp)}');
   print('');
-  print('Pajak tahunan = Rp${pajakTahunan.toInt()}');
+  print('Pajak tahunan = ${rupiahFormat.format(pajakTahunan.toInt())}');
 }
